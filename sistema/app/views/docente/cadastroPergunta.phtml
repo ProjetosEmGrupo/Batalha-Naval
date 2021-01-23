@@ -1,0 +1,114 @@
+
+<html>
+<FORM name="agp" method="POST" action="<?php echo BASE;  ?>docente/cadastrar-pergunta" enctype="multipart/form-data">
+  <?php echo (isset($this->alert) ? $this->alert : '');?>
+  <div class="container-fluid">
+    <div class="container col-sm-6">
+      <div class="text-center">
+        <form class="form-signin">
+          <br>
+          <h1 class="h3 mb-2 font-weight-normal">Cadastrar Perguntas</h1>
+          <br>
+          <label for="inputTitulo" class="sr-only">Enunciado:</label>
+          <input required="" type="text" id="inputTitulo" name="question" class="form-control" placeholder="Enunciado: *" required="" autofocus="">
+          <br>
+          <div class="row col-sm-12">
+            <div class="form-group">
+              <label for="respostas">Resposta Correta: *</label>
+              <select required="" class="form-control" name="answer" id="respostas">
+                <option value="A">Alternativa A</option>
+                <option value="B">Alternativa B</option>
+                <option value="C">Alternativa C</option>
+                <option value="D">Alternativa D</option>
+              </select>
+            </div>
+            &ensp;
+            <div class="form-group">
+              <label for="disciplinas">Disciplinas: *</label>
+              <select required="" class="form-control" name="disciplines_id" id="disciplinas">
+                <?php 
+                foreach ($view_disciplinas as $disciplina) {
+                  echo '<option value="'.$disciplina->id.'"> '.$disciplina->description.'</option>';
+                };
+                ?>
+              </select>
+            </div>
+            &ensp;
+            <div class="form-group">
+              <label for="nivel">Nível Educacional: *</label>
+              <select required="" class="form-control" name="schoolings_id" id="nivel">
+                <option value="1">Ensino Fundamental</option>
+                <option value="2">Ensino Médio</option>
+                <option value="3">Ensino Superior</option>
+              </select>
+            </div>
+          </div>
+          <label for="inputPergunta1" class="sr-only">Alternativa A:</label>
+          <input type="text" required="" id="inputPergunta1" name="alt1" class="form-control" placeholder="Alternativa A: *" required="" autofocus="">
+          <br>
+          <label for="inputPergunta2" class="sr-only">Alternativa B:</label>
+          <input type="text" required="" id="inputPergunta2" name="alt2" class="form-control" placeholder="Alternativa B: *" required="" autofocus="">
+          <br>
+          <label for="inputPergunta3" class="sr-only">Alternativa C:</label>
+          <input type="text" required="" id="inputPergunta3" name="alt3" class="form-control" placeholder="Alternativa C: *" required="" autofocus="">
+          <br>
+          <label for="inputPergunta4" class="sr-only">Alternativa D:</label>
+          <input type="text" required="" id="inputPergunta4" name="alt4" class="form-control" placeholder="Alternativa D: *" required="" autofocus="">
+          <br>
+          <label>* Preenchimento Obrigatório &ensp; </label>
+          <br>
+          <a href="<?php echo BASE. 'docente/lista-perguntas'; ?>"><button type="button" class="btn btn-info">Voltar</button></a>
+          <input type="submit" class="btn btn-info" value="Cadastrar">
+        </form>
+      </div>
+    </div>
+    <nav class="navbar fixed-bottom navbar-light">
+      <a href="#bannerformmodal" data-toggle="modal" data-target="#ajuda">Ajuda</a>
+    </nav>
+
+  </div>
+
+
+</body>
+          <!--
+MENSAGEM DE AJUDA CADASTRO DE PERGUNTAS
+-->
+<div class="modal" tabindex="-1" id="ajuda" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ajuda</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Para cadastrar uma pergunta, é necessário informar:</p>
+        <br>
+        <p>O título</p>
+        <br>
+        <p>A resposta</p>
+        <br>
+        <p>A dísciplina</p>
+        <br>
+        <p>O nível educacional</p>
+        <br>
+        <p>E as quatro alternativas.</p>
+        <br>
+        <p>Para concluír o cafastro basta clicar no botão Cadastrar, para sair desta tela clique em Voltar.</p>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </html>

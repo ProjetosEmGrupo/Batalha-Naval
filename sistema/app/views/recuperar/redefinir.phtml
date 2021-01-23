@@ -1,0 +1,71 @@
+
+
+<FORM name="agp" method="POST" action="<?php echo BASE . 'recuperar/redefinir/'. $view_id;  ?>" enctype="multipart/form-data">
+
+  <?php echo (isset($this->alert) ? $this->alert : '')?>
+  <aside class="container" style="margin-top:100px;">
+
+    <center>
+      <div class="col-md-12">
+
+
+        <div class="panel-body">
+
+          <br>
+
+
+          <center>
+            <br>
+            <h1 class="h3 mb-2 font-weight-normal">Redefinir Senha</h1>
+            <br>
+          </center>
+          <br>
+
+
+          <div class="col-md-2">
+
+          </div>
+
+
+          <div class="col-md-8">
+
+            <label for="inputSenha"><h3 class="h6 mb-2 font-weight-normal">Digite sua senha: </h3></label>
+            <input  required class="form-control" id="inputSenha" maxlength="30" type="password" name="password" placeholder="Digite a sua Senha" />
+            <br>
+            <label for="inputSenha2"><h3 class="h6 mb-2 font-weight-normal">Digite sua senha novamente: </h3></label>
+            <input required  class="form-control" id="inputSenha2" type="password" maxlength="30" name="confirmpassword" placeholder="Digite sua senha novamente" />
+            <br>
+            <br>
+            <br>
+
+            <br>
+            <br>
+
+            <center><button class="btn btn-danger btn-lg cor-botao">Redefinir</button> </center>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+
+
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="js/jquery.js"></script>
+        <!-- Include all compiled plugins (below), or include individual
+          files as needed -->
+          <script src="js/bootstrap.min.js"></script>
+
+        </center>
+      </aside>
+
+    </article>
+
+  </section>
+
+</FORM>
+</body>
+</html>

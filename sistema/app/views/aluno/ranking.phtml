@@ -1,0 +1,73 @@
+
+<div class="container-fluid">
+  <br>
+  <br>
+  <div class="container col-sm-8">
+    <div class="text-center">
+      <h1 class="h3 mb-2 font-weight-normal">Ranking</h1>
+      <br>
+      <br>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Usuário:</th>
+        <th scope="col">Nome:</th>
+        <th scope="col">Pontuação:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($view_lista as $l) {
+        $user = User::find($l->users_id);
+        
+        ?>
+        <tr>
+          <td><?php echo $user->login; ?></td>
+          <td><?php echo $user->name; ?></td>
+          <td><?php echo $l->p; ?></td>
+        </tr>
+
+      <?php } ?>
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="text-center">
+    <a class="nav-link active" href="<?php echo BASE.'aluno/menu-jogo' ?>"><button type="button" class="btn btn-info">Voltar</button></a>
+  </div>
+  <nav class="navbar fixed-bottom navbar-light">
+    <a href="#bannerformmodal" data-toggle="modal" data-target="#ajuda">Ajuda</a>
+  </nav>
+</div>
+</body>
+<div class="modal" tabindex="-1" id="ajuda" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ajuda</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Esse é o ranking com a pontuação dos membros presentes no seu grupo.</p>
+        <p>Caso queira sair clique no botão Voltar.</p>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,168 @@
+<?php echo (isset($this->alert) ? $this->alert : '') ?>
+<aside class="container">
+    <div class="col-md-12">
+
+        <div class="panel-body">
+            <center><p>
+                <font size="5">
+                    <b>Detalhes Projeto <?php echo $view_projeto->id; ?></b>
+                </font>
+            </p></center>
+            <br>
+            <br>
+            <br>
+
+            <?php $c = Customer::find($view_projeto->customer_id); ?>
+            <div class="col-md-4">                            
+                <font size="4">
+                    <p><b>Informações do Projeto</b></p>
+                </font>
+                <p>Cliente: <?php echo $c->name;?></p>
+                <p>Descrição: <?php echo $view_projeto->description;?></p>
+                <p>Status: <?php echo $view_projeto->status; ?></p>
+                <p>Preço estimado: <?php echo "R$ " . $view_projeto->e_price; ?></p> 
+                <p>Preço: 
+                    <?php 
+                    if(!is_null($view_projeto->price)){ 
+                        echo $view_projeto->price; 
+                    }
+                    else{
+                        echo "R$ --.---,--";
+                    }
+                    ?>
+
+                </p>
+                <p>Data Inicio Estimada: <?php echo date('d/m/Y', strtotime('+0 days', strtotime($view_projeto->e_date_start))); ?></p>
+                <p>Data Inicio: 
+                    <?php 
+                    if(!is_null($view_projeto->date_start)){ 
+                        echo date('d/m/Y', strtotime('+0 days', strtotime($view_projeto->date_start))); 
+                    }
+                    else{
+                        echo "--/--/----";
+                    }
+                    ?></p>
+                    <p>Data Fim Estimada: <?php echo date('d/m/Y', strtotime('+0 days', strtotime($view_projeto->e_date_end))); ?></p>
+                    <p>Data Fim: 
+                        <?php 
+                        if(!is_null($view_projeto->date_end)){ 
+                            echo date('d/m/Y', strtotime('+0 days', strtotime($view_projeto->date_end))); 
+                        }
+                        else{
+                            echo "--/--/----";
+                        }
+                        $funcoes = Plan::find_all_by_project_id($view_projeto->id);
+                        $count = 0;
+                        foreach ($funcoes as $funcao) {                            
+                            $count = $count + $funcao->amount;
+                        }
+                        $alloc = Allocation::find_all_by_project_id($view_projeto->id);
+                        $counta = 0;
+                        if(!empty($alloc)){
+
+                        }
+                        foreach ($alloc as $a) {
+                            $counta = $counta + 1;
+                        }
+                        /*
+                        $aloc = Allocation::find_all_by_project_id($view_projeto->id);
+                        $counta = 0;                    
+                        foreach ($aloc as $a) {
+                            $counta = $counta + 1;
+                        }
+                        */
+
+                        ?></p>
+
+                        <p>Estimativa de Funcionarios Alocados: <?php echo $count;?></p>
+                        <p>Funcionarios Alocados: <?php echo $counta;?></p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <font size="4">
+                            <p><b>Ações</b></p>
+                        </font>
+                        <?php if($view_projeto->status === "Em Andamento" or $view_projeto->status === "Planejamento"){ ?>
+                        <a href="<?php echo BASE . 'gerencia/cancelar-projeto/'. $view_projeto->id;?>"><button type="button" class="btn btn-default cor-botao">Cancelar Projeto</button></a>
+                        
+                        <br>
+                        <br>
+
+                        <a href="<?php echo BASE . 'gerencia/funcionario-alocao/'. $view_projeto->id;?>"><button type="button" class="btn btn-default cor-botao">Alocar Funcionários</button></a>
+                        <br>
+                        <br>
+
+                        <a href="<?php echo BASE . 'gerencia/edita-projeto/'. $view_projeto->id;?>"><button type="button" class="btn btn-primary btn cor-botao" data-toggle="modal">
+                            Editar Informações do Projeto
+                        </button></a>
+                        <br>
+                        <br>
+                            <?php } ?>
+
+                        <a href="<?php echo BASE . 'gerencia/listar-alocados/'. $view_projeto->id;?>"><button type="button" class="btn btn-default cor-botao">Visualizar Funcionários Alocados</button></a>
+                    </div>
+
+                </div>
+
+                <div class="container">
+                    <div class="col-md-4">
+                    </div>
+                    <br>
+                    
+                    <br>
+                </div>
+                <div class="col-md-12">
+                    <center><p>
+                        <font size="5">
+                            <b>Lista Funções</b>
+                        </font>
+                    </p></center>
+                </div>
+                <div id="list" class="row">
+                    <div class="table-responsive col-md-12">
+                       <table class="table" cellspacing="0" cellpadding="0">
+                        <thead>
+                          <tr>
+                            <th>Função</th>                  
+                            <th>Qtd Func.</th>                  
+                            <th>Nº de horas Est.</th>                  
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <?php 
+                      $planejamento = Plan::find_all_by_project_id($view_projeto->id);
+                      
+                      foreach ($planejamento as $p){
+                          $count = $count + $p->amount;
+                          $funcao = Role::find($p->role_id);
+                          ?>
+                          <tr>
+                              <td><?php echo $funcao->description; ?></td>
+                              <td><?php echo $p->amount; ?></td>
+                              <td><?php echo $count; ?></td>
+                          </tr>
+                      <?php } ?>
+                  </tbody>
+              </table>
+          </div>
+          <!-- Modal -->
+          <div class="modal fade" id="cancelamento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Cancelamento</h4>
+                    </div>
+                    <div class="modal-body">
+                        Deseja realmente Cancelar e Devolver Pagamento
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default cor-botao" data-dismiss="modal">Não</button>
+                        <a href="<?php echo BASE . 'gerencia/devolucao/' . $view_pedido->id; ?>"><button type="button" class="btn btn-primary cor-botao">Sim</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</aside>

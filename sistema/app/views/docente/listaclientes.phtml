@@ -1,0 +1,38 @@
+<html>
+<body>
+   <?php echo (isset($this->alert) ? $this->alert : '');?>
+  <section>
+   
+    <aside class="container">
+      <br>
+      <div class="panel-body">
+        <font size="6">
+          <center><b><p>Clientes</p></b></center>
+        </font>
+        <br>
+        <div id="list" class="row">
+          <div class="table-responsive col-md-12">
+            <table class="table" cellspacing="0" cellpadding="0">
+              <thead>
+                <tr>
+                  <th>Cod</th>
+                  <th>Nome</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($view_clientes as $c) {
+                ?>
+                <tr>
+                  <td><?php echo $c->id; ?></td>
+                  <td><?php echo $c->name; ?></td>
+                  
+                </tr>
+              <?php } ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </aside>
+  </section>
+</body>
+</html>

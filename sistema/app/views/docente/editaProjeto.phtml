@@ -1,0 +1,95 @@
+<script>
+  function formfunc(name) {
+    document.getElementById(name).submit();
+  }
+</script>
+<?php echo (isset($this->alert) ? $this->alert : '');?>
+<html>
+<body>
+
+ <FORM name="agp1" method="POST" action="<?php echo BASE .'gerencia/edita-projeto/'; ?>" enctype="multipart/form-data">
+
+
+   <aside class="container">
+
+    <div class="col-md-12">
+
+      <div class="panel-body">
+        <?php $teste = Project::find($view_projeto);  ?>
+
+        <center><p>
+          <font size="6">
+           <!-- Mensagem -->
+           <b>Editar Projeto  <?php echo $view_projeto;?></b>
+         </font>
+       </p></center>
+
+       <div class="col-md-1">
+       </div>
+
+       <div class="col-md-10">
+
+          
+
+        <label for="tituloproduto"><b>Descrição:</b></label>
+
+        <input  required class="form-control"  style="max-width:900px;" maxlength="19" id="inputEmailadm" value="<?php echo $teste->description; ?>" type="text" placeholder="Digite o título" name="description" />
+
+
+        <label for="preco"><b>Preço :</b></label>
+        <input   class="form-control" style="max-width:900px;" max="999999" id="preco" type="number" placeholder="Digite o preço estimado" name="price" />
+        <?php
+        $teste = Project::find($view_projeto); 
+        if(is_null($teste->date_start)){ ?>
+          <label for="qtdestoque"><b>Data Inicio:</b></label>
+          <div class="input-group date" data-provide="datepicker">
+            <input type="text" class="form-control" placeholder="MM/DD/AAAA" maxlength="10" name="date_start">
+            <div class="input-group-addon">
+              <span class="glyphicon glyphicon-th"></span>
+            </div>
+          </div>
+        <?php }else{ ?>
+
+        <script type="text/javascript"> $('teste1').datepicker((format: "dd/mm/yyyy" ,language: "pt-BR"));</script>
+
+        <label for="qtdestoque"><b>Data Fim:</b></label>
+        <div class="input-group date" data-provide="datepicker">
+          <input type="text" class="form-control" id="teste1" placeholder="MM/DD/AAAA" maxlength="10" name="date_end">
+          <div class="input-group-addon">
+            <span class="glyphicon glyphicon-th"></span>
+          </div>
+        </div>
+          <?php } ?>
+      </FORM>
+      <br>
+
+
+
+
+
+
+      <center>
+        <input value="Cadastrar" type="submit" class="btn btn-danger btn-lg cor-botao" onClick="formfunc('agp1')">
+
+        <a href="<?php echo BASE. 'gerencia/detalhe-projeto/'. $view_projeto;?>"><button type="submit" class="btn btn-danger btn-lg cor-botao">Cancelar</button></a></p>
+      </center>
+
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+</aside>
+
+</article>
+
+</section>
+
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,40 @@
+<html>
+<body>
+  <section>
+    <aside class="container">
+      <br>
+      <div class="panel-body">
+        <font size="6">
+          <center><b><p>Projetos XXXXXXX</p></b></center>
+       </font>
+       <div id="list" class="row">
+        <div class="table-responsive col-md-12">
+          <table class="table" cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <th>Numero Projeto</th>
+                <th>Data Início</th>                  
+                <th>Data Fim</th>                  
+                <th>Numero de Funcionários</th>                  
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td><?php echo 1; ?></td>
+                  <td><?php echo date('d/m/Y', strtotime('+0 days', strtotime(1))); ?></td>
+                  <td><?php echo date('d/m/Y', strtotime('+0 days', strtotime(1))); ?>
+                  <td>100 <?php #echo number_format($preco + $frete->value_freight, 2, ',', '.'); ?></td>
+                  <td class="actions">
+                    <a class="btn btn-default btn-xs cor-botao" href="<?php echo BASE . 'gerencia/detalhes-pedido/'; ?>">+Detalhes</a>
+                  </td>
+                </tr>
+              <?php ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </aside>
+  </section>
+</body>
+</html>

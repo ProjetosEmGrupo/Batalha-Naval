@@ -1,0 +1,105 @@
+<html>
+<FORM name="agp" method="POST" action="<?php echo BASE . 'gerencia/pesquisa-funcionario/';  ?>" enctype="multipart/form-data">
+  <body>
+   <?php echo (isset($this->alert) ? $this->alert : '');?>
+   <section>
+
+    <aside class="container">
+      <br>
+      <div class="panel-body">
+        <font size="6">
+          <center><b><p>Funcionários</p></b></center>
+        </font>
+        <br>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="input-group">
+              <input type="text" class="form-control" required placeholder="Digite e selecione o que deseja buscar Abaixo" name="busca">
+              <span class="input-group-btn">
+                <input class="btn btn-default"  type="submit" value="Buscar">
+              </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+          </div><!-- /.row -->
+          <br>
+          <select  required class="form-control" id="sel1" name="filtro">
+            <option selected  value="id">Código</option>
+            <option  value="name">Nome</option>
+            <option  value="cpf">CPF</option>
+            <option  value="role_id">Código função</option>
+          </select>
+          <br>
+          <div id="list" class="row">
+            <div class="table-responsive col-md-12">
+              <table class="table" cellspacing="0" cellpadding="0">
+                <thead>
+                  <?php if(isset($view_func) and is_array($view_func) and !is_null($view_func)){ ?>
+                    <tr>
+                      <th>Cod</th>
+                      <th>Nome</th>
+                      <th>Cargo</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php 
+                    $i = 0;
+                    
+                    foreach ($view_func as $f) {
+                      $r = Role::find($view_func[$i]->role_id);                    
+                      ?>
+                      <tr>
+                        <td><?php echo $view_func[$i]->id; ?></td>
+                        <td><?php echo $view_func[$i]->name; ?></td>
+                        <td><?php echo $r->description; ?></td>  
+                        <td class="actions">
+                          <a class="btn btn-default btn-xs cor-botao" href="<?php echo BASE . 'funcionario/detalhes-pedido/'. $view_func[$i]->id; ?>"> + </a>
+                        </td>               
+                      </tr>
+                      <?php $i = $i + 1;}
+                    }
+                    elseif(isset($view_func) and !is_null($view_func)){?>
+                     <tr>
+                      <th>Cod</th>
+                      <th>Nome</th>
+                      <th>Cargo</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php 
+                    $i = 0;
+
+                    foreach ($view_func as $f) {
+                      $r = Role::find($view_func->role_id);                    
+                      ?>
+                      <tr>
+                        <td><?php echo $view_func->id; ?></td>
+                        <td><?php echo $view_func->name; ?></td>
+                        <td><?php echo $r->description; ?></td>  
+                        <td class="actions">
+                          <a class="btn btn-default btn-xs cor-botao" href="<?php echo BASE . 'funcionario/detalhes-pedido/'. $view_func->id; ?>"> + </a>
+                        </td>               
+                      </tr>
+                      <?php $i = $i + 1;}
+
+                    }
+                    else{ ?>
+                      <tbody>
+                        <thead>
+                          <tr>
+                            <th>Cod</th>
+                            <th>Nome</th>
+                            <th>Cargo</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                      </tbody>
+                    <?php } ?>
+                    </table>
+                  </div>
+                </div>
+              </aside>
+            </section>
+          </form>
+        </body>
+        </html>

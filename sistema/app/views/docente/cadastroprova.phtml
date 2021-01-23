@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Batalha Naval - Dashboard</title>
+	<link rel="icon" href="img/icon.ico">
+	<link rel="stylesheet" type="text/css" href="css/cores.css">
+</head>
+<FORM name="agp" method="POST" action="<?php echo BASE;  ?>docente/cadastrar-prova/<?php echo $view_nivel ?>" enctype="multipart/form-data">
+ <?php echo (isset($this->alert) ? $this->alert : '')?>
+ <body>
+   <div class="container-fluid">
+    <div class="container col-sm-6">
+      <div class="text-center">
+        <form class="form-signin">
+          <br>
+          <h1 class="h3 mb-2 font-weight-normal">Cadastrar Prova</h1>
+          <br>
+          
+        </div>
+        <div class="form-group" align="left">
+          <label for="nivel">Nível Educacional: *</label>
+          <button class="form-control dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <?php if ($view_nivel == 1) echo "Fundamental";
+            if ($view_nivel == 2) echo "Médio";
+            if ($view_nivel == 3) echo "Superior"; ?>
+            
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="<?php echo BASE;  ?>docente/cadastrar-prova/1">Fundamental</a>
+            <a class="dropdown-item" href="<?php echo BASE;  ?>docente/cadastrar-prova/2">Médio</a>
+            <a class="dropdown-item" href="<?php echo BASE;  ?>docente/cadastrar-prova/3">Superior</a>
+          </div>
+          <br>
+          
+          <label for="disciplinas">Questão 1: *</label>
+          <select class="form-control" name="question1" id="disciplinas">
+            <?php foreach ($view_questoes as $q) {
+              echo '<option ' .((isset($view_post) && (string)$q->id === $view_post['question1']) ? ' selected ' : '').'" value="'.$q->id.'">'.$q->question.'</option>';
+            } ?>
+          </select>
+          <br>
+          <label for="disciplinas">Questão 2: *</label>
+          <select class="form-control" name="question2" id="disciplinas">
+            <?php foreach ($view_questoes as $q) {
+              echo '<option ' .((isset($view_post) && (string)$q->id === $view_post['question2']) ? ' selected ' : '').'" value="'.$q->id.'">'.$q->question.'</option>';
+            } ?>
+          </select>
+          <br>
+          <label for="disciplinas">Questão 3: *</label>
+          <select class="form-control" name="question3" id="disciplinas">
+            <?php foreach ($view_questoes as $q) {
+              echo '<option ' .((isset($view_post) && (string)$q->id === $view_post['question3']) ? ' selected ' : '').'" value="'.$q->id.'">'.$q->question.'</option>';
+            } ?>
+          </select>
+          <br>
+          <label for="disciplinas">Questão 4: *</label>
+          <select class="form-control" name="question4" id="disciplinas">
+           <?php foreach ($view_questoes as $q) {
+            echo '<option ' .((isset($view_post) && (string)$q->id === $view_post['question4']) ? ' selected ' : '').'" value="'.$q->id.'">'.$q->question.'</option>';
+          } ?>
+        </select>
+        <br>
+        <label for="disciplinas">Questão 5: *</label>
+        <select class="form-control" name="question5" id="disciplinas">
+          <?php foreach ($view_questoes as $q) {
+            echo '<option ' .((isset($view_post) && (string)$q->id === $view_post['question5']) ? ' selected ' : '').'" value="'.$q->id.'">'.$q->question.'</option>';
+          } ?>
+        </select>
+        <br>
+        <label for="disciplinas">Questão 6: *</label>
+        <select class="form-control" name="question6" id="disciplinas">
+         <?php foreach ($view_questoes as $q) {
+          echo '<option ' .((isset($view_post) && (string)$q->id === $view_post['question6']) ? ' selected ' : '').'" value="'.$q->id.'">'.$q->question.'</option>';
+        } ?>
+      </select>
+      <br>
+      <label for="disciplinas">Questão 7: *</label>
+      <select class="form-control" name="question7" id="disciplinas">
+       <?php foreach ($view_questoes as $q) {
+        echo '<option ' .((isset($view_post) && (string)$q->id === $view_post['question7']) ? ' selected ' : '').'" value="'.$q->id.'">'.$q->question.'</option>';
+      } ?>
+    </select>
+    <br>
+    <label for="disciplinas">Questão 8: *</label>
+    <select class="form-control" name="question8" id="disciplinas">
+      <?php foreach ($view_questoes as $q) {
+        echo '<option ' .((isset($view_post) && (string)$q->id === $view_post['question8']) ? ' selected ' : '').'" value="'.$q->id.'">'.$q->question.'</option>';
+      } ?>
+    </select>
+    <br>
+    <label for="disciplinas">Questão 9: *</label>
+    <select class="form-control" name="question9" id="disciplinas">
+      <?php foreach ($view_questoes as $q) {
+        echo '<option ' .((isset($view_post) && (string)$q->id === $view_post['question9']) ? ' selected ' : '').'" value="'.$q->id.'">'.$q->question.'</option>';
+      } ?>
+    </select>
+    <br>
+    <label for="disciplinas">Questão 10: *</label>
+    <select class="form-control" name="question10" id="disciplinas">
+      <?php foreach ($view_questoes as $q) {
+        echo '<option ' .((isset($view_post) && (string)$q->id === $view_post['question10']) ? ' selected ' : '').'" value="'.$q->id.'">'.$q->question.'</option>';
+      } ?>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="descricao">Descrição: *</label>
+    <input name="description" class="form-control" id="descricao" >
+  </div>
+  <label>* Preenchimento Obrigatório &ensp; </label>
+  <br>
+  <a href="<?php echo BASE. 'docente/lista-provas'; ?>"><button type="button" class="btn btn-info">Voltar</button></a>
+  <INPUT type="SUBMIT" class="btn btn-info" data-toggle="modal" VALUE="Cadastrar" data-target="#preenchimentoMensagem"/>
+</form>
+<br>
+<br>
+</div>  
+</div>
+<nav class="navbar fixed-bottom navbar-light">
+  <a href="#bannerformmodal" data-toggle="modal" data-target="#ajuda">Ajuda</a>
+</nav>
+</div>
+
+
+
+
+<!--
+MENSAGEM DE AJUDA CADASTRO DE PROVA
+-->
+<div class="modal" tabindex="-1" id="ajuda" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ajuda</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Para realizar o cadastro de provas é necessário preencher:</p>
+        <br>
+        <p>O nível educacional</p>
+        <br>
+        <p>As 10 Perguntas</p>
+        <br>
+        <p>E a descrição (opcional)</p>
+        <br>
+        <p>Após o preenchimento correto, basta clicar em Cadastrar para salvar a prova.</p>
+        <p>Para sair desta tela clique em Voltar.</p>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </html>

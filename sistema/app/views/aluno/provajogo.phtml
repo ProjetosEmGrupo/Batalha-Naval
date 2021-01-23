@@ -1,0 +1,81 @@
+
+<FORM name="agp" method="POST" action="<?php echo BASE;  ?>aluno/prova-jogo" enctype="multipart/form-data">
+  <?php echo (isset($this->alert) ? $this->alert : '');?>
+
+
+  <div class="container-fluid">
+    <div class="container col-md-12">
+      <br>
+      <div class="text-center">
+        <div class="text-center">
+          <h1 class="h3 mb-2 font-weight-normal">Prova</h1>
+        </div>
+        <br>
+        <?php 
+        $i = 0;
+        while($i<10){
+
+          $q = Question::find($view_prova[$i]->id);
+          ?>
+          Questão <?php echo ($i+1<10 ?  '0'.$i+1 : $i);?> - <?php echo $q->question; ?>:
+            <br>
+            A) <input checked name="<?php echo 'q'. $i; ?>" value="A" type="radio"> <?php echo $q->alt1; ?> &ensp;        
+            B) <input name="<?php echo 'q'. $i; ?>" value="B" type="radio"> <?php echo $q->alt2; ?> &ensp;
+            C) <input name="<?php echo 'q'. $i; ?>" value="C" type="radio"> <?php echo $q->alt3; ?> &ensp;
+            D) <input name="<?php echo 'q'. $i; ?>" value="D" type="radio"> <?php echo $q->alt4; ?> &ensp; 
+            <br>
+            <br>
+            <?php 
+            $i++;
+          } 
+          ?>
+          <br>
+
+          <div class="text-center">
+            <label>* Preenchimento Obrigatório &ensp; </label>
+            <input type="submit" class="btn btn-info" data-toggle="modal" data-target="#preenchimentoMensagem" value="Responder">
+          </div>
+        </div>
+        <nav class="navbar fixed-bottom navbar-light">
+          <a href="#bannerformmodal" data-toggle="modal" data-target="#ajuda">Ajuda</a>
+        </nav>
+      </div>
+<!--
+MENSAGEM DE PREENCHIMENTO INCORRETO
+-->
+</body>
+
+ <div class="modal" tabindex="-1" id="ajuda" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ajuda</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Esse é o seu jogo. Aqui você jogar a batalha naval conta o sistema. Para conseguir uma boa pontuação basta com que você consiga derrotar seu adversário da forma mais rapída.</p>
+        <p>Seu adversário já posicionou todas suas embarcações, então basta apenas começar a atacá-lo.
+          Você possui uma pontuação, e a cada vez que você o ataca ela diminui. Sua pontuação só poderá ser consultada no fim da partida.</p>
+        <p>Para atacar basta com que você escolha e clique em alguma a posição no tabuleiro. Ao acertar um tiro na água, a posição do tabuleiro fica azul. Sinalizando que você errou o tiro, já ao acertar a posição ficará na cor preta.</p>
+        <br>
+        <p>O jogo possui som, caso você queira desabilitá-lo, clique no na opção Som.</p>
+        <p>Você deverá joga-lo até derrubar todas as embarcações do seu inimigo.</p>
+        <p>Caso você queira desistir basta clicar em Desistir e confirmar a mensagem.</p>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>

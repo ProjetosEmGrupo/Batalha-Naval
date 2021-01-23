@@ -1,0 +1,82 @@
+<html>
+<FORM name="agp" method="POST" action="<?php echo BASE . 'gerencia/pesquisa-projeto/';  ?>" enctype="multipart/form-data">
+  <body>
+    <section>
+      <?php echo (isset($this->alert) ? $this->alert : '');?>
+      <aside class="container">
+        <br>
+        <div class="panel-body">
+          <font size="6">
+            <center><b><p>Projetos</p></b></center>
+          </font>
+          <br>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="input-group">
+                <input type="text" class="form-control" required placeholder="Digite e selecione o que deseja buscar Abaixo" name="busca">
+                <span class="input-group-btn">
+                  <input class="btn btn-default"  type="submit" value="Buscar">
+                </div><!-- /input-group -->
+              </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+            <br>
+            <select  required class="form-control" id="sel1" name="filtro">
+              <option selected  value="id">Código</option>
+              <option  value="desc">Descrição</option>
+              <option  value="status">Status</option>s
+              <option  value="cliente">Código Cliente</option>
+            </select>
+            <br>
+            <div id="list" class="row">
+              <div class="table-responsive col-md-12">
+                <table class="table" cellspacing="0" cellpadding="0">
+                  <thead>
+                   <?php if(isset($view_projetos) and is_array($view_projetos) and !is_null($view_projetos)){ ?>
+                    <tr>
+                      <th>Cod</th>
+                      <th>Cliente</th>                  
+                      <th>Status</th>                  
+                      <th>Nº de Func.</th>                  
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($view_projetos as $vp) {
+                      $qtd = Plan::find_by_sql("select * from plans where project_id = ". $vp->id);
+                      $cliente = Customer::find($vp->customer_id);
+                      $count = 0;
+                      foreach ($qtd as $q){
+                        $count = $count + $q->amount;
+                      }
+                      ?>
+                      <tr>
+                        <td><?php echo $vp->id; ?></td>
+                        <td><?php echo $cliente->name; ?></td>
+                        <td><?php echo $vp->status; ?>
+                        <td><?php echo $count; ?></td>
+                        <td class="actions">
+                          <a class="btn btn-default btn-xs cor-botao" href="<?php echo BASE . 'gerencia/detalhe-projeto/'. $vp->id; ?>">+</a>
+                        </td>
+                      </tr>
+                    <?php }
+                  }
+                  else{?>
+                    
+                    <th>Cod</th>
+                    <th>Cliente</th>                  
+                    <th>Status</th>                  
+                    <th>Nº de Func.</th>                  
+                    <th></th>
+                  </tr>
+                </thead>
+                
+              <?php } ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </aside>
+  </section>
+</form>
+</body>
+</html>

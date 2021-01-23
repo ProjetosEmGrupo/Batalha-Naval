@@ -1,0 +1,92 @@
+<?php echo (isset($this->alert) ? $this->alert : '');?>
+
+<FORM name="agp" method="POST" action="<?php echo BASE;  ?>docente/alterar-usuario" enctype="multipart/form-data">
+<!--
+CORPO DA PAGINA
+-->
+<div class="container-fluid">
+  <div class="container col-sm-4">
+    <div class="text-center">
+      <form class="form-signin">
+        <br>
+        <h1 class="h3 mb-2 font-weight-normal">Alterar</h1>
+        <br>
+        <label for="inputUser" class="sr-only">Usuário:</label>
+        <input type="text" id="inputUser" name="login" class="form-control" value="<?php 
+        if(isset($view_post)) echo $view_post['login'];
+        else echo $view_usuario->login;
+        ?>" placeholder="Usuário: *" required="" autofocus="">
+        <br>
+        <label for="inputNome" class="sr-only">Nome completo:</label>
+        <input type="text" id="inputNome" name="name" value="<?php 
+        if(isset($view_post)){
+          echo $view_post['name'];
+      }
+      else 
+      {
+          echo $view_usuario->name;
+      }
+      ?>" class="form-control" placeholder="Nome completo: *" required="" autofocus="">
+      <br>
+      <label for="inputSenha" class="sr-only">Senha:</label>
+      <input type="password" name="password" id="inputSenha" class="form-control" placeholder="Senha: *" required="">
+      <br>
+      <label for="inputConfirmaSenha" class="sr-only">Confirmar senha:</label>
+      <input type="password" name="confirmpassword" id="inputConfirmaSenha" class="form-control" placeholder="Confirmar senha: *" required="">
+      <br>
+      <label>* Preenchimento Obrigatório &ensp; </label>
+      <br>
+      <br>
+      <a href="<?php echo BASE. 'docente/menu-status'; ?>"><button type="button" class="btn btn-info">Voltar</button></a>
+      <input type="submit" class="btn btn-info" data-toggle="modal" value="Alterar" data-target="#preenchimentoMensagem">
+  </form>
+</div>
+</div>
+<nav class="navbar fixed-bottom navbar-light">
+    <a href="#bannerformmodal" data-toggle="modal" data-target="#ajuda">Ajuda</a>
+</nav>
+</div>
+
+</body>
+<!--
+MENSAGEM DE AJUDA ALTERAR DADOS ADMINISTRADOR
+-->
+<div class="modal" tabindex="-1" id="ajuda" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ajuda</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+    <p>Para realizar alteração basta alterar os campo de:</p>
+    <br>
+    <p>Usuário</p>
+    <br>
+    <p>Nome</p>
+    <br>
+    <p>Senha</p>
+    <br>
+    <p>Confirmar senha</p>
+    <br>
+    <p>E após a alteração desses campos basta clicar no botão Alterar.</p>
+    <p>Caso queira desistir clique no botão Voltar.</p>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>
+    </div>
+</div>
+</div>
+</div>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>

@@ -1,0 +1,42 @@
+
+/* Cores Navbar*/
+.cor-barra{
+  background-color: #303f9f;
+}
+.barra-link{
+	color: white;
+}
+.barra-link:hover{
+	color: white;
+}
+.barra-link:active{
+	color: grey;
+}
+
+/* Cores Links
+
+BARRA #303f9f
+
+BOTOES #17a2b8
+
+*/ 
+.link-pagina{
+	color:  #303f9f;
+}
+.link-pagina:hover{
+	color:  #303f9f;
+}
+.link-pagina:active{
+	color:  #303f9f;
+}
+.link-pagina:focus{
+	color:  #303f9f;
+}
+.link-pagina:link{
+	color:  #303f9f;
+}
+
+.cor-pill:hover{
+color: gray;
+
+}

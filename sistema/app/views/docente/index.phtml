@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+  <body>
+
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/Cor.css" rel="stylesheet">
+    <link href="css/link.css" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+
+  </head>
+
+  <body>     
+
+
+    <section> 
+     <?php echo (isset($this->alert) ? $this->alert : '');?>
+
+     <aside class="container">
+
+
+
+      <div class="col-md-12">
+        <br>
+        <ul class="nav nav-tabs nav-justified">
+          <li class="active"><a href="<?php echo BASE; ?>gerencia/" data-toggle=""><div class="tab-cor">Projeto</div></a></li>
+          <li><a href="<?php echo BASE; ?>gerencia/cliente" data-toggle=""><div class="tab-cor">Cliente</div></a></li>
+          <li><a href="<?php echo BASE; ?>gerencia/Funcionario"><div class="tab-cor">Funcionário</div></a></li>
+        </ul>
+
+        <div class="tab-content">
+         <br>
+         <br>
+         <br>
+         <br>
+
+        <br>
+        <br>
+
+         <center>
+          <button class="btn btn-danger btn-lg cor-botao"><div class="tab-cor"><a href="<?php echo BASE; ?>gerencia/adicionar-funcao" data-toggle=""><font color="white">Cadastrar Projeto</font></button> 
+            <br>
+            <br>
+            <br>
+            <button class="btn btn-danger btn-lg cor-botao"><a href="<?php echo BASE; ?>gerencia/granularidade" data-toggle=""><div class="tab-cor"><font color="white">Listar Projetos</font></button> 
+            </center>
+            <br>
+            <br>
+            <br>
+            <br>
+
+
+            <div class="tab-content">
+
+
+            </div>
+
+
+          </aside>
+
+
+        </section>
+
+
+
+
+      </body>
+      </html>

@@ -1,0 +1,136 @@
+<script id="game" src="<?php echo BOWER. 'jquery/src/game.js'; ?>"></script>
+<?php /*
+echo $add_css;
+echo $add_js
+
+?>
+
+<div class="container-fluid">
+  <div class="container col-sm-12">
+    <div class="text-center">
+      <br>
+      <br>
+      <h1 class="h3 mb-2 font-weight-normal">Jogo</h1>
+      <br>
+      <br>
+      <!--TABULEIRO-->
+      <section id="game"></section>
+    </div>
+    <div class="text-center">
+      <br>
+      <label id="sound-checkbox">
+        <input type="checkbox" checked>
+        <span class="label-body">Som</span>
+      </label>&ensp;
+      <a href="#"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#desistirJogo">Desistir</button></a>
+    </div>
+    <audio id="melody" loop>
+      <source src="sounds/melody.mp3">
+        <source src="sounds/melody.wav">
+        </audio>
+        <audio id="miss">
+          <source src="sounds/miss.mp3">
+            <source src="sounds/miss.wav">
+            </audio>
+            <audio id="hit">
+              <source src="sounds/hit.mp3">
+                <source src="sounds/hit.wav">
+                </audio>
+                <audio id="win">
+                  <source src="sounds/win.mp3">
+                    <source src="sounds/win.wav">
+                    </audio>
+                    <audio id="click">
+                      <source src="sounds/click.mp3">
+                        <source src="sounds/click.wav">
+                        </audio>
+                      </div>
+                    </div>
+                    <br>
+                  </div>
+<!--
+MENSAGEM DE DESISTENCIA
+
+<div class="modal" tabindex="-1" id="desistirJogo" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Sair</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Deseja sair da partida?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Não</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal">Sim</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" tabindex="-1" id="pergunta" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Pergunta 1</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body container-fluid">
+        XXXXXXXXXXXXXXXXXXXXXXXXX:
+        <br>
+        A) <input name="questao1" value="a" type="radio"> XXXXXXXXX &ensp;        
+        B) <input name="questao1" value="b" type="radio"> XXXXXXXXXX &ensp;
+        C) <input name="questao1" value="c" type="radio"> XXXXXXXXX &ensp;
+        D) <input name="questao1" value="d" type="radio"> XXXXXXXXX &ensp; 
+        <br>
+        <br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal">Responder</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+SCRIPTS REFERENTES AO JOGO -->
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="js/game.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="js/game.js"></script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "http://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</html>
+<?php $add_js; */?>
+
+
+
+
+
